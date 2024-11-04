@@ -118,13 +118,13 @@ This will produce all the images on top of which you can run the Yocto-CI `testi
 
 ## Run `Yocto-CI` `testimage` tests
 
-Each time you log out/in to `GNR` you have to source your Yocto/Yocto-CI env.
+Each time you log out/in to `GNR` you have to source your Yocto/Yocto-CI env. for the machine you are looking for
 ```
 cd /yocto/yocto-team/$USER/poky/
 source oe-init-build-env <cxl|cxl-simics>
 ```
 
-Note `<cxl|cxl-simics>`, recalling it defines what machine you are building for.
+Note `<cxl|cxl-simics>` meaning you iehter go with `cxl` (QEMU) or `cxl-simics` (SIMICS).
 
 Make sure the image is updated and built (`bitbake core-image-cxl-sdk`). Then check Yocto-CI `testimage` parameters in `conf/local.conf`. Mine are
 ```
@@ -139,12 +139,12 @@ From within your working directory `/yocto/yocto-team/$USER/poky/cxl` the tests 
 
 I strongly advise each of us creates a branch with his/her own tests and we merge it to the main branch when appropriate.
 
-So before running `testimage` tests make sure you have the QEMU started, the port QEMU listens for the `ssh` set in `conf/local.conf:TEST_TARGET_IP` then run:
+Start the QEMU or SIMICS, check the port the QEMU or SIMICS listens to for `ssh`, set that port in `conf/local.conf:TEST_TARGET_IP`, then run:
 
 ```
 bitbake core-image-cxl-sdk -c testimage
-
 ```
+It will run all the tests defined in `TEST_SUITES`
 
 ## `Yocto-CI` `testimage` test results
 
