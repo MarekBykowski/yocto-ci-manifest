@@ -123,32 +123,33 @@ Then on top of it you can run the Yocto-CI `testimage` tests.
 
 Producing Yocto artifacts (steps above) is a one-shot action for running `testimage` tests. By saying that I mean there is no need to re-generate the images for running, even adding and running `testimage` tests unless the source code for artifacts gets changed and you want to pull the changes in.
 
-Each time you log out/in to `GNR` you have to switch to the `poky` and source for the machine you are interested in
+I truly belive once you are here you will only need to run the commands from here for running the tests and adding and running the tests.
+
+Each time you log out and then in to `GNR` you have to switch to the `poky` distro and source for the machine you are interested in
 
 ```
 cd /yocto/yocto-team/$USER/poky/
 ```
 
-For `QEMU` go with:
+If you want to test against `QEMU` go with:
 
 ```
 source oe-init-build-env cxl
 ```
 
-For `Simics` with:
+If you want to test against `Simics` go with:
 
 ```
 source oe-init-build-env cxl-simics
 ```
 
-Make sure the image is updated and built (`bitbake core-image-cxl-sdk` ran to completion and without any errors). Then check Yocto-CI parameters in `conf/local.conf`. Mine are/were
+Before running the tests make sure the rootfs image is updated and built (`bitbake core-image-cxl-sdk` shall run to completion and without the errors). After check for Yocto-CI parameters in `conf/local.conf`. Mine are/were when writing here:
 ```
 TEST_TARGET_IP = "GNR-JF04-5350.jf.intel.com:2222"           
 TEST_SUITES = "ping ssh cpdk"
 ```
 
-where:
-- `TEST_TARGET_IP` defines the IP address of the Linux machine `QEMU`/`Simics` runs and the port number the `QEMU`/`Simics` is available at on this host. As we run `QEMU` from within `GNR` the IP will be `GNR-JF04-5350.jf.intel.com`. The port must be checked in the log files of the `QEMU`. For `Simics` as it runs on the Intel machine you have to check the address with the `ip addr` command. To check the port for `Simics` this wiki may be of help https://github.com/MarekBykowski/avery_qemu/wiki/Simics
+- `TEST_TARGET_IP` defines the IP address of the Linux machine the `QEMU`/`Simics` runs on and the port number the these are available at. For `QEMU` as we typically run it from within `GNR` the IP is `GNR-JF04-5350.jf.intel.com`. The port must be checked in the log files of the `QEMU`. `Simics` are typically run on the Intel servers, so you need to check the IP for the port this wiki may be of help https://github.com/MarekBykowski/avery_qemu/wiki/Simics
 - `TEST_SUITES` defines the tests to run
 
 From within your working directory `/yocto/yocto-team/$USER/poky/cxl` or `/yocto/yocto-team/$USER/poky/cxl-simics` the tests pre-defined (written by Yocto folks) are accessed in `../meta/lib/oeqa/runtime/cases`. Tests that we write should go to our meta layer `meta-cxl` in `../../meta-cxl/lib/oeqa/runtime/cases`.
