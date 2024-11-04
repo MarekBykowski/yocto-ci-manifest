@@ -121,15 +121,16 @@ cd /yocto/yocto-team/$USER/poky/
 source oe-init-build-env <cxl|cxl-simics>
 ```
 
-Note again `<cxl|cxl-simics>` meaning you eihter go with `cxl` (QEMU) or `cxl-simics` (SIMICS).
+Note again `<cxl|cxl-simics>` means you eihter go with `QEMU` (`source oe-init-build-env cxl`) or `SIMICS` (`source oe-init-build-env cxl-simics`).
 
-Make sure the image is updated and built (`bitbake core-image-cxl-sdk` run to completion). Then check Yocto-CI parameters in `conf/local.conf`. Mine are
+Make sure the image is updated and built (`bitbake core-image-cxl-sdk` ran to completion). Then check Yocto-CI parameters in `conf/local.conf`. Mine are
 ```
 TEST_TARGET_IP = "GNR-JF04-5350.jf.intel.com:2222"           
 TEST_SUITES = "ping ssh cpdk"
 ```
 
-- `TEST_TARGET_IP` defines what Linux host the QEMU/SIMICS runs on and what port they are available at
+where:
+- `TEST_TARGET_IP` defines what Linux host the QEMU/SIMICS sits and what port they are available at on this host
 - `TEST_SUITES` defines the tests to run
 
 From within your working directory `/yocto/yocto-team/$USER/poky/cxl` or `/yocto/yocto-team/$USER/poky/cxl-simics` the tests pre-defined (written by Yocto folks) are accessed from `../meta/lib/oeqa/runtime/cases`. Tests that we write should go to our meta layer `meta-cxl` in `../../meta-cxl/lib/oeqa/runtime/cases`.
