@@ -47,7 +47,9 @@ Congrats! Now your credentials are cached.
 
 ## Clone all the repos required
 
-**This is important!** I have prepared a special path on `GNR` in `/yocto/yocto-team` using the `LVM` (logical-volume-manager) concatenating the free spaces across various drives in which all us as should create his/her user dir and work from there
+**This is important!** I have prepared a special path `/yocto/yocto-team` on `GNR` using the `LVM` (logical-volume-manager) concatenating the free spaces across various drives in which all us as should create his/her user dir and work from there.
+If not abide by to it we will exhaust the space on GNR shortly. Never ever try these steps in your home dir.
+
 ```
 mkdir -p /yocto/yocto-team/<user>
 cd /yocto/yocto-team/<user>
