@@ -122,24 +122,34 @@ Then on top of it you can run the Yocto-CI `testimage` tests.
 ## Run `Yocto-CI` `testimage` tests
 
 Each time you log out/in to `GNR` you have to source your Yocto/Yocto-CI env. for the machine you are looking for
+
 ```
 cd /yocto/yocto-team/$USER/poky/
-source oe-init-build-env <cxl|cxl-simics>
 ```
 
-Note again `<cxl|cxl-simics>` means you eihter go with `QEMU` (`source oe-init-build-env cxl`) or `SIMICS` (`source oe-init-build-env cxl-simics`).
+then either
 
-Make sure the image is updated and built (`bitbake core-image-cxl-sdk` ran to completion). Then check Yocto-CI parameters in `conf/local.conf`. Mine are
+```
+source oe-init-build-env cxl
+```
+
+or 
+
+```
+source oe-init-build-env cxl-simics
+```
+
+Make sure the image is updated and built (`bitbake core-image-cxl-sdk` ran to completion). Then check Yocto-CI parameters in `conf/local.conf`. Mine are/were
 ```
 TEST_TARGET_IP = "GNR-JF04-5350.jf.intel.com:2222"           
 TEST_SUITES = "ping ssh cpdk"
 ```
 
 where:
-- `TEST_TARGET_IP` defines what Linux host the QEMU/SIMICS sits and what port they are available at on this host
+- `TEST_TARGET_IP` defines the IP addr and port number of the Linux host the QEMU/SIMICS runs
 - `TEST_SUITES` defines the tests to run
 
-From within your working directory `/yocto/yocto-team/$USER/poky/cxl` or `/yocto/yocto-team/$USER/poky/cxl-simics` the tests pre-defined (written by Yocto folks) are accessed from `../meta/lib/oeqa/runtime/cases`. Tests that we write should go to our meta layer `meta-cxl` in `../../meta-cxl/lib/oeqa/runtime/cases`.
+From within your working directory `/yocto/yocto-team/$USER/poky/cxl` or `/yocto/yocto-team/$USER/poky/cxl-simics` the tests pre-defined (written by Yocto folks) are accessed in `../meta/lib/oeqa/runtime/cases`. Tests that we write should go to our meta layer `meta-cxl` in `../../meta-cxl/lib/oeqa/runtime/cases`.
 
 I strongly advise each of us creates a branch with his/her own tests and we merge it to the main branch when appropriate.
 
@@ -156,9 +166,18 @@ The command will run all the tests defined in `TEST_SUITES`
 If you are not yet in the Yocto-CI env. go with:
 ```
 cd /yocto/yocto-team/$USER/poky/
-source oe-init-build-env <cxl|cxl-simics>
 ```
 
-Again poinitg to `<cxl|cxl-simics>` that defines what machine you're interested in.
+then either for QEMU
+
+```
+source oe-init-build-env cxl
+```
+
+or SIMICS
+
+```
+source oe-init-build-env cxl-simics
+```
 
 Then check for the test results in `tmp/log/oeqa`
