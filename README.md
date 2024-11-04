@@ -45,15 +45,15 @@ The minimum required scopes are 'repo', 'read:org', 'workflow'.
 
 Congrats! Now your credentials are cached.
 
-## Clone all the needed repos
+## Clone all the repos required
 
-**This is important!** I have prepared a special path using the LVM (logical-volume-manager) in `/yocto/yocto-team` concatenating the free spaces across various drives in which all us as should create his/her user dir wotj there
+**This is important!** I have prepared a special path on `GNR` in `/yocto/yocto-team` using the `LVM` (logical-volume-manager) concatenating the free spaces across various drives in which all us as should create his/her user dir and work from there
 ```
 mkdir -p /yocto/yocto-team/<user>
 cd /yocto/yocto-team/<user>
 ```
 
-Then clone all the required repos using the `git-repo` tools from the manifest file.
+Then clone all the repos required using the `git-repo` tool and the manifest file.
 
 ```
 git clone https://gerrit.googlesource.com/git-repo
