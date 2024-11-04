@@ -10,6 +10,7 @@ Yocto-CI manifest is a build-up of the mandatory git repositories, listed below,
 - [Set up access to private repos](#set-up-access-to-private-repos)
 - [Where do we work on?](#where-do-we-work-on)
 - [Clone all the repos required](#clone-all-the-repos-required)
+- []
 
 ## Set up access to private repos
 
@@ -66,3 +67,37 @@ git clone https://gerrit.googlesource.com/git-repo
 ./git-repo/repo init -u https://github.com/MarekBykowski/yocto-ci-manifest.git
 ./git-repo/repo sync
 ```
+
+## Run `Yocto` to produce the images
+
+From within `/yocto/yocto-team/<user>`
+
+```
+$ cd poky/
+$ source oe-init-build-env cxl
+
+### Shell environment set up for builds. ###
+
+You can now run 'bitbake <target>'
+
+Common targets are:
+    bitbake core-image-cxl-sdk
+    # For testimage and tests in TEST_SUITES run
+    bitbake core-image-cxl-sdk -c testimage
+    #core-image-cxl-sdk
+
+You can also run generated qemu images with a command like 'runqemu qemux86-64'.
+
+Other commonly useful commands are:
+ - 'devtool' and 'recipetool' handle common recipe tasks
+ - 'bitbake-layers' handles common layer tasks
+ - 'oe-pkgdata-util' handles common target package tasks
+```
+
+and as prompted with go with
+
+```
+bitbake core-image-cxl-sdk
+```
+
+This will produce all the images and top of it you can run the Yocto `testimage` tests.
