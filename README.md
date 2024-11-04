@@ -70,8 +70,20 @@ git clone https://gerrit.googlesource.com/git-repo
 
 ## Run `Yocto` to produce the images
 
+Go to `poky` repository
+
 ```
-$ cd /yocto/yocto-team/$USER/poky/ && source oe-init-build-env cxl
+$ cd /yocto/yocto-team/$USER/poky/
+```
+
+and source either for `QEMU` (`cxl` named machine) or `SIMICS` (`cxl-simics` machine). 
+
+```
+source oe-init-build-env <machine>
+```
+eg. for QEMU
+```
+source oe-init-build-env cxl
 ```
 
 You will be shown with
