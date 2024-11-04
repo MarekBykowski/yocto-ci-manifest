@@ -16,10 +16,10 @@ First, all/almost all of the repos I keep our Yocto are `private`, aka nobody wi
 - go to https://github.com/settings/tokens and click on `generate a personal access token (classic)`, figure below
 
 <p align="center">
-  <img width="700" src="https://github.com/user-attachments/assets/44e5a5d7-bb84-4de8-9587-c98ee95f4931">  
+  <img width="700" src="https://github.com/user-attachments/assets/2cfe1995-eba8-4d9a-b06a-3f909682c0bf">  
 </p>
 
-- then in `Note` write `yocto-ci`, set expiration to `no expiration` and click on `repo` giving the full control over the private repos, as shown in the figure as fallows
+- then in the imput label `Note` write `yocto-ci`, set expiration to `no expiration` and click on `repo` giving the full control over the private repos, as shown in the figure as fallows
 
 <p align="center">
   <img width="700" src="https://github.com/user-attachments/assets/0dfb35ac-675f-44fa-ae41-672b9fbe1995">
