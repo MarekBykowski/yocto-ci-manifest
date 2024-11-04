@@ -17,7 +17,7 @@ First, all/almost all of the repos I keep our Yocto are `private`, aka nobody wi
 
 ![image](https://github.com/user-attachments/assets/44e5a5d7-bb84-4de8-9587-c98ee95f4931)
 
-<img src="[44e5a5d7-bb84-4de8-9587-c98ee95f4931](https://github.com/user-attachments/assets/44e5a5d7-bb84-4de8-9587-c98ee95f4931]"
+<img src="44e5a5d7-bb84-4de8-9587-c98ee95f4931](https://github.com/user-attachments/assets/44e5a5d7-bb84-4de8-9587-c98ee95f4931"
         alt="Picture" 
         width="800" 
         height="600" 
