@@ -1,6 +1,6 @@
 ## yocto-CI manifest
 
-Yocto-CI manifest is a build-up of the mandatory git repositories, listed below, enabling running `testimage` tests agains `QEMU` or `Simics`. The manifest comprises the following repositories:
+Yocto-CI manifest is a build-up of the mandatory git repositories, listed below, enabling running `testimage` tests https://docs.yoctoproject.org/dev/dev-manual/runtime-testing.html#running-tests agains `QEMU` or `Simics`. The manifest comprises the following repositories:
 - meta-cxl 
 - meta-openembedded
 - poky
