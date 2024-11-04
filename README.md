@@ -37,7 +37,7 @@ First, all/almost all of the repos I keep our Yocto are `private`, aka nobody wi
    <img width="700" src="https://github.com/user-attachments/assets/48efcae5-8548-493d-972a-17bc20db7d31">
 </p>
 
-Once you have the token copied run `gh auth login` pasting it in the last raw
+Once you have the token copied run `gh auth login` pasting it in the last line
 ```
 $ gh auth login                                            
 ? Where do you use GitHub? GitHub.com                                                 
