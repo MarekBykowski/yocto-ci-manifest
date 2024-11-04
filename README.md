@@ -47,7 +47,13 @@ Congrats! Now your credentials are cached.
 
 ## Clone all the needed repos
 
-Clone all the required repos using the `git-repo` tools from the manifest file.
+This is important! I have prepared a special path using the LVM (logical-volume-manager) `/yocto/yocto-team` in wich all us as should create his/her user and clone the repos using the manifest file. So create a user dir and switch there
+```
+mkdir -p /yocto/yocto-team/<user>
+cd /yocto/yocto-team/<user>
+```
+
+Then clone all the required repos using the `git-repo` tools from the manifest file.
 
 ```
 git clone https://gerrit.googlesource.com/git-repo
