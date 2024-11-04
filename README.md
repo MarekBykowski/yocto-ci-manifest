@@ -13,7 +13,7 @@ Yocto-CI manifest is a build-up of the mandatory git repositories, listed below,
 
 First, all/almost all of the repos I keep our Yocto are `private`, aka nobody without explicitly graneded access can access, neither see it. To be able to access it auto from within your account, namely without giving user/password each time when logging you have to cache your credentials. One method I explored successfully is to generate a personal access token (classic) and cache it via `github CLI gh`
 
-- go to https://github.com/settings/tokens and click on `generate a new token`, right hand side
+- go to https://github.com/settings/tokens and click on `generate new token`, right hand side
 
 <p align="center">
   <img width="700" src="https://github.com/user-attachments/assets/2692acc5-a204-44eb-ac6b-b1baa8dda923">  
