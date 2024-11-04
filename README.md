@@ -17,9 +17,9 @@ First, all/almost all of the repos I keep our Yocto are `private`, aka nobody wi
 
 ![image](https://github.com/user-attachments/assets/44e5a5d7-bb84-4de8-9587-c98ee95f4931)  
 
-ssss
+ssss  
 
-<img align="left" width="100" height="100" src="[https://picsum.photos/100/100](https://github.com/user-attachments/assets/44e5a5d7-bb84-4de8-9587-c98ee95f4931)">
+<img align="left" width="100" height="100" src="[https://picsum.photos/100/100](https://github.com/user-attachments/assets/44e5a5d7-bb84-4de8-9587-c98ee95f4931)">  
 
 - then in `Note` write `yocto-ci`, set expiration to `no expiration` and click on `repo` giving the full control over the private repos, as shown in the figure as fallows
 
