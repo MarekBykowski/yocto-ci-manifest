@@ -130,7 +130,7 @@ Each time you log out/in to `GNR` you have to source your Yocto/Yocto-CI env. fo
 cd /yocto/yocto-team/$USER/poky/
 ```
 
-then for `QEMU` go with
+and source for the machine you are interested in. For `QEMU` go with
 
 ```
 source oe-init-build-env cxl
