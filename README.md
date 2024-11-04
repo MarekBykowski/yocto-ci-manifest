@@ -62,7 +62,7 @@ cd /yocto/yocto-team/$USER
 
 ## Clone all the repos required
 
-Clone all the repos required using the `git-repo` tool and the manifest file from within this repo.
+Clone all the repos necessary using the `git-repo` tool and the manifest file from within this repo.
 
 ```
 git clone https://gerrit.googlesource.com/git-repo
@@ -121,8 +121,7 @@ Then on top of it you can run the Yocto-CI `testimage` tests.
 
 ## Run `Yocto-CI` `testimage` tests
 
-**Producing Yocto artifacts (steps above) is a one-shot action.** No need to re-produce them unless the source code there gets changed and you want to pull the changes in.
-For running the `testimage` tests all you need to do is possibly write new tests and and run the commands from only this chapter.
+Producing Yocto artifacts (steps above) is a one-shot action for running `testimage` tests. By saying that I mean there is no need to re-generate the images for running, even adding and running `testimage` tests unless the source code gets changed there and you want to pull the changes in.
 
 Each time you log out/in to `GNR` you have to switch to the `poky` and source for the machine you are interested in
 
