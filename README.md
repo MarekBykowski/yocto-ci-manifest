@@ -175,7 +175,7 @@ then source for the machine you are looking for, either for `QEMU`
 source oe-init-build-env cxl
 ```
 
-or for `Simics`
+or `Simics`
 
 ```
 source oe-init-build-env cxl-simics
