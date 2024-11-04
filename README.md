@@ -47,7 +47,7 @@ Congrats! Now your credentials are cached.
 
 ## Clone all the needed repos
 
-This is important! I have prepared a special path using the LVM (logical-volume-manager) `/yocto/yocto-team` in wich all us as should create his/her user and clone the repos using the manifest file. So create a user dir and switch there
+**This is important!** I have prepared a special path using the LVM (logical-volume-manager) in `/yocto/yocto-team` concatenating the free spaces across various drives in which all us as should create his/her user dir wotj there
 ```
 mkdir -p /yocto/yocto-team/<user>
 cd /yocto/yocto-team/<user>
