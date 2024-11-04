@@ -10,7 +10,9 @@ Yocto-CI manifest is a build-up of the mandatory git repositories, listed below,
 - [Set up access to private repos](#set-up-access-to-private-repos)
 - [Where do we work on?](#where-do-we-work-on)
 - [Clone all the repos required](#clone-all-the-repos-required)
-- [Run `Yocto` to produce the images](#run-yocto-to-produce-the-images)
+- [Run Yocto to produce the images](#run-yocto-to-produce-the-images)
+- [Run `Yocto-CI` `testimage` tests](#run-yocto-ci-testimage-tests)
+- [`Yocto-CI` `testimage` test results](#yocto-ci-testimage-test-results)
 
 ## Set up access to private repos
 
