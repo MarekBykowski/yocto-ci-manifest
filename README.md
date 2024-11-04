@@ -117,7 +117,7 @@ then build the Yocto images
 bitbake core-image-cxl-sdk
 ```
 
-On top of them you can run the Yocto-CI `testimage` tests.
+Then on top of it you can run the Yocto-CI `testimage` tests.
 
 ## Run `Yocto-CI` `testimage` tests
 
