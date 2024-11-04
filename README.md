@@ -78,7 +78,7 @@ Go to `poky` distro
 $ cd /yocto/yocto-team/$USER/poky/
 ```
 
-and source either for `QEMU` (`QEMU` in Yocto is `cxl` machine) or `SIMICS` (`cxl-simics`) depending on what machine you want to build the artifacts for and run the Yocto-CI against.
+and source either for `QEMU` (`QEMU` in Yocto is referred to as `cxl` machine) or `SIMICS` (`SIMICS` in Yocto is referred to as `cxl-simics`) depending on what machine you want to build the artifacts for and run the Yocto-CI against.
 
 ```
 source oe-init-build-env <cxl|cxl-simics>
