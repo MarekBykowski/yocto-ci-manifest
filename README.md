@@ -70,18 +70,19 @@ git clone https://gerrit.googlesource.com/git-repo
 
 ## Run `Yocto` to produce the images
 
-Go to `poky` repository
+Go to `poky` distro
 
 ```
 $ cd /yocto/yocto-team/$USER/poky/
 ```
 
-and source either for `QEMU` (`cxl` named machine) or `SIMICS` (`cxl-simics` machine). 
+and source for either `QEMU` (`QEMU` in Yocto is `cxl` machine) or `SIMICS` (`cxl-simics`) depending on what machine for you want to build the artifacts and run the Yocto-CI against.
 
 ```
 source oe-init-build-env <machine>
 ```
-eg. for QEMU
+
+eg. to run for QEMU go with
 ```
 source oe-init-build-env cxl
 ```
@@ -107,21 +108,23 @@ Other commonly useful commands are:
  - 'oe-pkgdata-util' handles common target package tasks
 ```
 
-and as prompted with go with
+and as prompted above go with
 
 ```
 bitbake core-image-cxl-sdk
 ```
 
-This will produce all the images on top of which you can run the Yocto `testimage` tests.
+This will produce all the images on top of which you can run the Yocto-CI `testimage` tests.
 
 ## Run `Yocto-CI` `testimage` tests
 
 Each time you log out/in to `GNR` you have to source your Yocto/Yocto-CI env.
 ```
 cd /yocto/yocto-team/$USER/poky/
-source oe-init-build-env cxl
+source oe-init-build-env <cxl|cxl-simics>
 ```
+
+Note `<cxl|cxl-simics>`, recalling it defines what machine you are building for.
 
 Make sure the image is updated and built (`bitbake core-image-cxl-sdk`). Then check Yocto-CI `testimage` parameters in `conf/local.conf`. Mine are
 ```
@@ -132,7 +135,7 @@ TEST_SUITES = "ping ssh cpdk"
 - `TEST_TARGET_IP` defines where the QEMU to test against is and what port it is available at.  
 - `TEST_SUITES` defines the tests to run.  
 
-From within your working directory `/yocto/yocto-team/$USER/poky/cxl` the tests pre-defined (written by Yocto folks) are in `../meta/lib/oeqa/runtime/cases`. Tests that we write should go to our meta layer `meta-cxl` in `../../meta-cxl/lib/oeqa/runtime/cases`.
+From within your working directory `/yocto/yocto-team/$USER/poky/cxl` the tests pre-defined (written by Yocto folks) are accessed from `../meta/lib/oeqa/runtime/cases`. Tests that we write should go to our meta layer `meta-cxl` in `../../meta-cxl/lib/oeqa/runtime/cases`.
 
 I strongly advise each of us creates a branch with his/her own tests and we merge it to the main branch when appropriate.
 
@@ -148,7 +151,9 @@ bitbake core-image-cxl-sdk -c testimage
 If you are not yet in the Yocto-CI env. go with:
 ```
 cd /yocto/yocto-team/$USER/poky/
-source oe-init-build-env cxl
+source oe-init-build-env <cxl|cxl-simics>
 ```
+
+Again poinitg to `<cxl|cxl-simics>` that defines what machine you're interested in.
 
 Then check for the test results in `tmp/log/oeqa`
