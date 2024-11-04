@@ -31,7 +31,20 @@ First, all/almost all of the repos I keep our Yocto are `private`, aka nobody wi
 <p align="center">
    <img width="700" src="https://github.com/user-attachments/assets/48efcae5-8548-493d-972a-17bc20db7d31">
 </p>
-  
+
+Once you have the token copied run `gh auth login` pasting it in the last raw
+```
+$ gh auth login                                            
+? Where do you use GitHub? GitHub.com                                                 
+? What is your preferred protocol for Git operations on this host? HTTPS              
+? How would you like to authenticate GitHub CLI? Paste an authentication token        
+Tip: you can generate a Personal Access Token here https://github.com/settings/tokens 
+The minimum required scopes are 'repo', 'read:org', 'workflow'.                       
+? Paste your authentication token:                                                    
+```
+
+Now your credentials are cached and no need to provide them each time when accessing the repos.
+
 ## hhhh
 
 Clone all the required repos using the `git-repo` tools reading the git menifest file.
