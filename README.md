@@ -55,7 +55,7 @@ mkdir -p /yocto/yocto-team/<user>
 cd /yocto/yocto-team/<user>
 ```
 
-Then clone all the repos required using the `git-repo` tool and the manifest file.
+Then clone all the repos required using the `git-repo` tool and the manifest file from within this repo.
 
 ```
 git clone https://gerrit.googlesource.com/git-repo
