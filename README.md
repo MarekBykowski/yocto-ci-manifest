@@ -28,7 +28,7 @@ First, all/almost all of the repos I keep our Yocto are `private`, aka nobody wi
 </p>
 
 - then scroll down and click on `generate token`
-- make sure to copy the token now as you won’t be able to see it again!
+- after it the token is presented with you. Make sure to copy it now as you won’t be able to see it again!
 
 <p align="center">
    <img width="700" src="https://github.com/user-attachments/assets/48efcae5-8548-493d-972a-17bc20db7d31">
