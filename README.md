@@ -22,7 +22,7 @@ First, all/almost all of the repos I keep our Yocto are `private`, aka nobody wi
 - then in the imput label `Note` write `yocto-ci`, set expiration to `no expiration` and click on `repo` giving the full control over the private repos, as shown in the figure as fallows
 
 <p align="center">
-  <img width="700" src="https://github.com/user-attachments/assets/0dfb35ac-675f-44fa-ae41-672b9fbe1995">
+  <img width="700" src="https://github.com/user-attachments/assets/7aff979a-8a0c-4c9c-9c83-8176cd636bdb">
 </p>
 
 - then scroll down and click on `generate token`
