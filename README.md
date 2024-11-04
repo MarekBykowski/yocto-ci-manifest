@@ -111,7 +111,19 @@ cd /yocto/yocto-team/$USER/poky/
 source oe-init-build-env cxl
 ```
 
-Make sure the image is updated and build (`bitbake core-image-cxl-sdk`). Then run Yocto-CI `testimage` tests with
+Make sure the image is updated and built (`bitbake core-image-cxl-sdk`). Then check Yocto-CI `testimage` parameters in `conf/local.conf`. Mine are
+```
+TEST_TARGET_IP = "GNR-JF04-5350.jf.intel.com:2222"           
+TEST_SUITES = "ping ssh cpdk"
+```
+
+`TEST_TARGET_IP` defines where the QEMU to test against is and what port it is available at. `TEST_SUITES` defines the tests to run.  
+From within your working diretory `/yocto/yocto-team/$USER/poky/cxl` the tests pre-defined (written by Yocto folks) are in `../poky/meta/lib/oeqa/runtime/cases`.  
+Test that we write should go to our meta layer `meta-cxl` in `../../meta-cxl/lib/oeqa/runtime/`
+
+I strongly advise each of us creates a branch with his/her own tests and we merge it to the main branch when appropriate. 
+
+To run Yocto-CI `testimage` tests run 
 ```
 bitbake core-image-cxl-sdk -c testimage
 ```
