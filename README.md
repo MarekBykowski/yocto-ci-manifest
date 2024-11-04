@@ -90,7 +90,7 @@ or
 source oe-init-build-env cxl-simics
 ```
 
-Then you will be shown with
+Upon sourcing you will be shown with
 
 ```
 ### Shell environment set up for builds. ###
