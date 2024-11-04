@@ -43,11 +43,11 @@ The minimum required scopes are 'repo', 'read:org', 'workflow'.
 ? Paste your authentication token:                                                    
 ```
 
-Now your credentials are cached and no need to provide them each time when accessing the repos.
+Congrats! Now your credentials are cached.
 
-## hhhh
+## Clone all the needed repos
 
-Clone all the required repos using the `git-repo` tools reading the git menifest file.
+Clone all the required repos using the `git-repo` tools from the manifest file.
 
 ```
 git clone https://gerrit.googlesource.com/git-repo
