@@ -54,8 +54,8 @@ Congrats! Now your credentials are cached.
 If not abiding by to it we will exhaust the space on GNR shortly. Never ever try these steps in your home dir. Producing Yocto images and this is what we are going to do is ~400M occupation. Running tests on top is almost no extra space but the space the python test scripts take.
 
 ```
-mkdir -p /yocto/yocto-team/<user>
-cd /yocto/yocto-team/<user>
+mkdir -p /yocto/yocto-team/$USER
+cd /yocto/yocto-team/$USER
 ```
 
 ## Clone all the repos required
@@ -70,11 +70,8 @@ git clone https://gerrit.googlesource.com/git-repo
 
 ## Run `Yocto` to produce the images
 
-From within `/yocto/yocto-team/<user>`
-
 ```
-$ cd poky/
-$ source oe-init-build-env cxl
+$ cd /yocto/yocto-team/$USER/poky/ && source oe-init-build-env cxl
 
 ### Shell environment set up for builds. ###
 
@@ -101,3 +98,11 @@ bitbake core-image-cxl-sdk
 ```
 
 This will produce all the images and top of it you can run the Yocto `testimage` tests.
+
+Notes:
+- each time you log out/in to `GNR` you have to source your Yocto/Yocto-CI env., namely
+  ```
+  cd /yocto/yocto-team/$USER/poky/
+  source oe-init-build-env cxl
+  ```
+- then you can bitbake an `image` or actually any given `recipe`, eg. `bitbake core-image-cxl-sdk`
