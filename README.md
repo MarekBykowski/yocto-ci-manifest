@@ -8,7 +8,7 @@ Yocto-CI manifest is a build-up of the mandatory git repositories, listed below,
 ## Table-Of-Contents
 
 - [Set up access to private repos](#set-up-access-to-private-repos)
-- [Where do we work on](#where-do-we-work-on)
+- [Where do we work on?](#where-do-we-work-on-?)
 - [Clone all the repos required](#clone-all-the-repos-required)
 
 ## Set up access to private repos
@@ -47,7 +47,7 @@ The minimum required scopes are 'repo', 'read:org', 'workflow'.
 
 Congrats! Now your credentials are cached.
 
-## Where do we work on
+## Where do we work on?
 
 **This is important!** I have prepared a special path `/yocto/yocto-team` on `GNR` using the `LVM` (logical-volume-manager) concatenating the free spaces across various drives in which all us as should create his/her user dir and work from there.
 If not abide by to it we will exhaust the space on GNR shortly. Never ever try these steps in your home dir.
