@@ -120,10 +120,9 @@ TEST_SUITES = "ping ssh cpdk"
 - `TEST_TARGET_IP` defines where the QEMU to test against is and what port it is available at.  
 - `TEST_SUITES` defines the tests to run.  
 
-From within your working diretory `/yocto/yocto-team/$USER/poky/cxl` the tests pre-defined (written by Yocto folks) are in `../poky/meta/lib/oeqa/runtime/cases`.  
-Test that we write should go to our meta layer `meta-cxl` in `../../meta-cxl/lib/oeqa/runtime/`
+From within your working directory `/yocto/yocto-team/$USER/poky/cxl` the tests pre-defined (written by Yocto folks) are in `../poky/meta/lib/oeqa/runtime/cases`. Tests that we write should go to our meta layer `meta-cxl` in `../../meta-cxl/lib/oeqa/runtime/`.
 
-I strongly advise each of us creates a branch with his/her own tests and we merge it to the main branch when appropriate. 
+I strongly advise each of us creates a branch with his/her own tests and we merge it to the main branch when appropriate.
 
 To run Yocto-CI `testimage` tests run 
 ```
