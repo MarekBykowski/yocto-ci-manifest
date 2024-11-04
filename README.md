@@ -121,7 +121,7 @@ Then on top of it you can run the Yocto-CI `testimage` tests.
 
 ## Run `Yocto-CI` `testimage` tests
 
-Producing Yocto artifacts (steps above) is a one-shot action for running `testimage` tests. By saying that I mean there is no need to re-generate the images for running, even adding and running `testimage` tests unless the source code gets changed there and you want to pull the changes in.
+Producing Yocto artifacts (steps above) is a one-shot action for running `testimage` tests. By saying that I mean there is no need to re-generate the images for running, even adding and running `testimage` tests unless the source code for artifacts gets changed and you want to pull the changes in.
 
 Each time you log out/in to `GNR` you have to switch to the `poky` and source for the machine you are interested in
 
