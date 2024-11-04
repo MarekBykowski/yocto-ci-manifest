@@ -72,7 +72,11 @@ git clone https://gerrit.googlesource.com/git-repo
 
 ```
 $ cd /yocto/yocto-team/$USER/poky/ && source oe-init-build-env cxl
+```
 
+You will be shown with
+
+```
 ### Shell environment set up for builds. ###
 
 You can now run 'bitbake <target>'
