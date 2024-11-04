@@ -149,7 +149,7 @@ TEST_SUITES = "ping ssh cpdk"
 ```
 
 where:
-- `TEST_TARGET_IP` defines the IP addr and port number of the Linux host the `QEMU`/`Simics` runs
+- `TEST_TARGET_IP` defines the IP addr of the Linux machine `QEMU`/`Simics` is running on and the and port number the `QEMU`/`Simics` is available at. As we run `QEMU` from `GNR` it will `GNR-JF04-5350.jf.intel.com`. As `Simics` is run on the Intel machine you have to check the addr with for example the `ip addr` command
 - `TEST_SUITES` defines the tests to run
 
 From within your working directory `/yocto/yocto-team/$USER/poky/cxl` or `/yocto/yocto-team/$USER/poky/cxl-simics` the tests pre-defined (written by Yocto folks) are accessed in `../meta/lib/oeqa/runtime/cases`. Tests that we write should go to our meta layer `meta-cxl` in `../../meta-cxl/lib/oeqa/runtime/cases`.
