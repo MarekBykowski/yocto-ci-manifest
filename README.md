@@ -15,12 +15,18 @@ First, all/almost all of the repos I keep our Yocto are `private`, aka nobody wi
 
 - go to https://github.com/settings/tokens and click on `generate a personal access token (classic)`, figure below
 
-![image](https://github.com/user-attachments/assets/44e5a5d7-bb84-4de8-9587-c98ee95f4931)
+![image](https://github.com/user-attachments/assets/44e5a5d7-bb84-4de8-9587-c98ee95f4931){ width="42" height="42" }
 
-- then set `no expiration` and click on `repo` giving the full control over the private repos, as shown in the figure as fallows
+- then in `Note` write `yocto-ci`, set expiration to `no expiration` and click on `repo` giving the full control over the private repos, as shown in the figure as fallows
 
-![image](https://github.com/user-attachments/assets/f4dd2a8d-b8af-4886-852a-394db8f3e881)
+![image](https://github.com/user-attachments/assets/0dfb35ac-675f-44fa-ae41-672b9fbe1995)
 
+- then scroll down and click on `generate token`
+- make sure to copy the token now as you won’t be able to see it again!
+
+![image](https://github.com/user-attachments/assets/48efcae5-8548-493d-972a-17bc20db7d31)
+
+  
 ## hhhh
 
 Clone all the required repos using the `git-repo` tools reading the git menifest file.
