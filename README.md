@@ -122,7 +122,7 @@ Then on top of it you can run the Yocto-CI `testimage` tests.
 ## Run `Yocto-CI` `testimage` tests
 
 **Producing Yocto artifacts (steps above) is a one-shot action.** No need to re-produce them unless the source code there gets changed and you want to pull the changes in.
-For running the `testimage` tests all you need to do is to possibly write new tests and and run the commands from only this chapter.
+For running the `testimage` tests all you need to do is possibly write new tests and and run the commands from only this chapter.
 
 Each time you log out/in to `GNR` you have to source your Yocto/Yocto-CI env. for the machine you are looking for
 
