@@ -75,7 +75,7 @@ git clone https://gerrit.googlesource.com/git-repo
 Go to `poky` distro
 
 ```
-$ cd /yocto/yocto-team/$USER/poky/
+cd /yocto/yocto-team/$USER/poky/
 ```
 
 and source either for `QEMU` (`QEMU` in Yocto is referred to as `cxl` machine) or `Simics` (`Simics` in Yocto is referred to as `cxl-simics`) depending on what machine you want to build the artifacts for and run the Yocto-CI against.
