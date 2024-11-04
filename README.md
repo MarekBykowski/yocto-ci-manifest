@@ -124,7 +124,8 @@ From within your working directory `/yocto/yocto-team/$USER/poky/cxl` the tests 
 
 I strongly advise each of us creates a branch with his/her own tests and we merge it to the main branch when appropriate.
 
-To run Yocto-CI `testimage` tests run 
+To run Yocto-CI `testimage` tests run make sure you have the QEMU started, note a port at which it accepts `ssh`, set the port in `conf/local.conf` then run:
 ```
 bitbake core-image-cxl-sdk -c testimage
+
 ```
