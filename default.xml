@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <remote fetch="https://github.com" name="github"/>
+  <remote fetch="https://git.openembedded.org/" name="openembedded"/>
   <project name="MarekBykowski/meta-cxl"  path="meta-cxl" remote="github" revision="refs/heads/nanbield"/>
-  <project name="MarekBykowski/meta-openembedded" path="meta-openembedded" remote="github" revision="refs/heads/nanbield"/>
+  <project name="meta-openembedded" path="meta-openembedded" remote="openembedded" revision="refs/heads/nanbield"/>
   <project name="MarekBykowski/poky" path="poky" remote="github" revision="refs/heads/nanbield"/>
 </manifest>
