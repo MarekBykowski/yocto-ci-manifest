@@ -7,9 +7,9 @@ Yocto-CI manifest is a build-up of the mandatory git repositories, listed below,
 
 ## Table-Of-Contents
 
-- [Set up Simics/vp/cosim from scratch](#set-up-simicsvpcosim-env-from-scratch)  
-- [Note for building for vp](#note-for-building-for-vp)
-- [Email](#email)
+- [Set up working environment](#set-up-working-environment)  
+
+## Set up working environment
 
 Clone all the required repos using the `git-repo` tools reading the git menifest file.
 
