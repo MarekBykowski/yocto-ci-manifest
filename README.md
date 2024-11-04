@@ -1,6 +1,6 @@
 ## yocto-CI manifest
 
-Yocto-CI manifest is a build-up of the mandatory git repositories, listed below, enabling running `testimage` tests agains QEMU or SIMICS. The manifest comprises the following repositories:
+Yocto-CI manifest is a build-up of the mandatory git repositories, listed below, enabling running `testimage` tests agains `QEMU` or `Simics`. The manifest comprises the following repositories:
 - meta-cxl 
 - meta-openembedded
 - poky
@@ -78,7 +78,7 @@ Go to `poky` distro
 $ cd /yocto/yocto-team/$USER/poky/
 ```
 
-and source either for `QEMU` (`QEMU` in Yocto is referred to as `cxl` machine) or `SIMICS` (`SIMICS` in Yocto is referred to as `cxl-simics`) depending on what machine you want to build the artifacts for and run the Yocto-CI against.
+and source either for `QEMU` (`QEMU` in Yocto is referred to as `cxl` machine) or `Simics` (`Simics` in Yocto is referred to as `cxl-simics`) depending on what machine you want to build the artifacts for and run the Yocto-CI against.
 
 ```
 source oe-init-build-env cxl
@@ -127,13 +127,13 @@ Each time you log out/in to `GNR` you have to source your Yocto/Yocto-CI env. fo
 cd /yocto/yocto-team/$USER/poky/
 ```
 
-then either
+then for `QEMU` go with
 
 ```
 source oe-init-build-env cxl
 ```
 
-or 
+for `Simics` with
 
 ```
 source oe-init-build-env cxl-simics
@@ -146,14 +146,14 @@ TEST_SUITES = "ping ssh cpdk"
 ```
 
 where:
-- `TEST_TARGET_IP` defines the IP addr and port number of the Linux host the QEMU/SIMICS runs
+- `TEST_TARGET_IP` defines the IP addr and port number of the Linux host the `QEMU`/`Simics` runs
 - `TEST_SUITES` defines the tests to run
 
 From within your working directory `/yocto/yocto-team/$USER/poky/cxl` or `/yocto/yocto-team/$USER/poky/cxl-simics` the tests pre-defined (written by Yocto folks) are accessed in `../meta/lib/oeqa/runtime/cases`. Tests that we write should go to our meta layer `meta-cxl` in `../../meta-cxl/lib/oeqa/runtime/cases`.
 
 I strongly advise each of us creates a branch with his/her own tests and we merge it to the main branch when appropriate.
 
-Kick off the QEMU or SIMICS (https://github.com/MarekBykowski/avery_qemu/wiki/B2B-with-Yocto-qcow), check the port the QEMU or SIMICS listens to for `ssh`, set the IP addr the QEMU or SIMICS along with the port in `conf/local.conf:TEST_TARGET_IP`, then start the tests:
+Kick off the `QEMU` or `Simics` (https://github.com/MarekBykowski/avery_qemu/wiki/B2B-with-Yocto-qcow), check the port the `QEMU` or `Simics` listens to for `ssh`, set the IP addr the `QEMU` or `Simics` along with the port in `conf/local.conf:TEST_TARGET_IP`, then start the tests with:
 
 ```
 bitbake core-image-cxl-sdk -c testimage
@@ -168,16 +168,16 @@ If you are not yet in the Yocto-CI env. go with:
 cd /yocto/yocto-team/$USER/poky/
 ```
 
-then either for QEMU
+then source for the machine you are looking for, either for `QEMU`
 
 ```
 source oe-init-build-env cxl
 ```
 
-or SIMICS
+or for `Simics`
 
 ```
 source oe-init-build-env cxl-simics
 ```
 
-Then check for the test results in `tmp/log/oeqa`
+Then look for the logfiles in `tmp/log/oeqa`
