@@ -76,18 +76,13 @@ Go to `poky` distro
 $ cd /yocto/yocto-team/$USER/poky/
 ```
 
-and source for either `QEMU` (`QEMU` in Yocto is `cxl` machine) or `SIMICS` (`cxl-simics`) depending on what machine for you want to build the artifacts and run the Yocto-CI against.
+and source either for `QEMU` (`QEMU` in Yocto is `cxl` machine) or `SIMICS` (`cxl-simics`) depending on what machine you want to build the artifacts for and run the Yocto-CI against.
 
 ```
-source oe-init-build-env <machine>
+source oe-init-build-env <cxl|cxl-simics>
 ```
 
-eg. to run for QEMU go with
-```
-source oe-init-build-env cxl
-```
-
-You will be shown with
+Then you will be shown with
 
 ```
 ### Shell environment set up for builds. ###
@@ -108,13 +103,13 @@ Other commonly useful commands are:
  - 'oe-pkgdata-util' handles common target package tasks
 ```
 
-and as prompted above go with
+then build the Yocto images
 
 ```
 bitbake core-image-cxl-sdk
 ```
 
-This will produce all the images on top of which you can run the Yocto-CI `testimage` tests.
+On top of them you can run the Yocto-CI `testimage` tests.
 
 ## Run `Yocto-CI` `testimage` tests
 
