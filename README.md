@@ -101,12 +101,17 @@ and as prompted with go with
 bitbake core-image-cxl-sdk
 ```
 
-This will produce all the images and top of it you can run the Yocto `testimage` tests.
+This will produce all the images on top of which you can run the Yocto `testimage` tests.
 
-Notes:
-- each time you log out/in to `GNR` you have to source your Yocto/Yocto-CI env., namely
-  ```
-  cd /yocto/yocto-team/$USER/poky/
-  source oe-init-build-env cxl
-  ```
-- then you can bitbake an `image` or actually any given `recipe`, eg. `bitbake core-image-cxl-sdk`
+## Run `Yocto-CI` `testimage` tests
+
+Each time you log out/in to `GNR` you have to source your Yocto/Yocto-CI env.
+```
+cd /yocto/yocto-team/$USER/poky/
+source oe-init-build-env cxl
+```
+
+Make sure the image is updated and build (`bitbake core-image-cxl-sdk`). Then run Yocto-CI `testimage` tests with
+```
+bitbake core-image-cxl-sdk -c testimage
+```
