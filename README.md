@@ -187,7 +187,15 @@ Then look for the logfiles in `tmp/log/oeqa`
 
 ### Timeout for the commands in test
 
-For running the commands over `ssh`/testing the target `Yocto-CI` sets certain `timeout`, by default it is 300 sec, after which it kills the commands.
+Commands in tests in Yocto-CI are typically structured like this
+
+```
+ssh -l root -o ServerAliveCountMax=2 -o ServerAliveInterval=30 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o LogLevel=ERROR -p 2222 GNR-JF04-5350.jf.intel.com export PATH=/usr/sbin:/sbin:/usr/bin:/bin; cd /home/root/cxl-validation-suite && ./cpdk_HelloWorld
+```
+
+with `cd /home/root/cxl-validation-suite && ./cpdk_HelloWorld` is what to be run on the target. Such a command in Yocto-CI has `timeout` set, by default it is 300 sec, after which the comamnd gets killed.
+
+See excerpt from Yocto-Ci
 
 ```
 def run(self, command, timeout=None, ignore_status=True):           
@@ -223,7 +231,4 @@ index 841bf46..4bad642 100644
              #self.tc.logger.info("####### status: #######\n%s" % status)
 ```
 
-The only worry with `timeout=0` is that if the command doesn't return at all Yocto-CI `testimage` won't return neither. It will so called hang infinitely. But-the-way the command the Yocto-CI typically runs is structured like this
-```
-ssh -l root -o ServerAliveCountMax=2 -o ServerAliveInterval=30 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o LogLevel=ERROR -p 2222 GNR-JF04-5350.jf.intel.com export PATH=/usr/sbin:/sbin:/usr/bin:/bin; cd /home/root/cxl-validation-suite && ./cpdk_HelloWorld
-```
+The only worry with `timeout=0` is that if the command doesn't return at all Yocto-CI `testimage` won't return neither. It will so called hang infinitely. 
