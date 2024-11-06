@@ -154,7 +154,7 @@ From within your working directory `/yocto/yocto-team/$USER/poky/cxl` or `/yocto
 
 I strongly advise each of us creates a branch with his/her own tests and we merge it to the main branch when appropriate.
 
-Kick off the `QEMU` or `Simics` (https://github.com/MarekBykowski/avery_qemu/wiki/B2B-with-Yocto-qcow), check the port the `QEMU` or `Simics` listens to for `ssh`, set the IP addr the `QEMU` or `Simics` along with the port in `conf/local.conf:TEST_TARGET_IP`, then start the tests with:
+Kick off the `QEMU` or `Simics` (https://github.com/MarekBykowski/avery_qemu/wiki/B2B-with-Yocto-qcow), check the port the `QEMU` or `Simics` listens to for `ssh`, set the IP address of the `QEMU` or `Simics` along with the port in `conf/local.conf:TEST_TARGET_IP`, then run the tests with:
 
 ```
 bitbake core-image-cxl-sdk -c testimage
