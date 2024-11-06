@@ -182,3 +182,44 @@ source oe-init-build-env cxl-simics
 ```
 
 Then look for the logfiles in `tmp/log/oeqa`
+
+## Misc
+
+### Timeout for the commands in test
+
+For running the commands over `ssh`/testing the target `Yocto-CI` sets certain `timeout`, by default it is 300 sec, after which it kills the commands.
+
+```
+def run(self, command, timeout=None, ignore_status=True):           
+    """                                                             
+        Runs command in target.                                     
+                                                                    
+        command:    Command to run on target.                       
+        timeout:    <value>:    Kill command after <val> seconds.   
+                    None:       Kill command default value seconds. 
+                    0:          No timeout, runs until return.      
+    """                                                             
+```
+
+For a slow targets, eg. `QEMU` running against `Cosim` that may stand up to an issue as a command may get killed before it returns. So we should either set timeout to 0, then there is no timeout and the command runs until it returns or we should set the time which we are essured it goes over the time the command is running. I recommend putting the timeout to 0 (`timeout=0`) in the test you write, eg.
+
+```
+[mbykowsx@GNR-JF04-5350 meta-cxl]$ git diff
+diff --git a/lib/oeqa/runtime/cases/cpdk.py b/lib/oeqa/runtime/cases/cpdk.py
+index 841bf46..4bad642 100644
+--- a/lib/oeqa/runtime/cases/cpdk.py
++++ b/lib/oeqa/runtime/cases/cpdk.py
+@@ -36,9 +36,13 @@ class CPDKTest(OERuntimeTestCase):
+     def test_cpdk(self):
+         cmds = [
+             'cd /home/root/cxl-validation-suite && ./cpdk_HelloWorld'
+             ]
+         for cmd in cmds:
+-            status, output = self.target.run(cmd)
++            # change the timeout as needed
++            status, output = self.target.run(cmd, timeout=0)
+             #self.tc.logger.info("####### command #######\n%s" % cmd)
+             #self.tc.logger.info("####### output: #######\n%s" % output)
+             #self.tc.logger.info("####### status: #######\n%s" % status)
+```
+
