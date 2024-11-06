@@ -195,7 +195,7 @@ Commands in tests in Yocto-CI are typically structured like this
 ssh -l root -o ServerAliveCountMax=2 -o ServerAliveInterval=30 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o LogLevel=ERROR -p 2222 GNR-JF04-5350.jf.intel.com export PATH=/usr/sbin:/sbin:/usr/bin:/bin; cd /home/root/cxl-validation-suite && ./cpdk_HelloWorld
 ```
 
-with `cd /home/root/cxl-validation-suite && ./cpdk_HelloWorld` is what to be run on the target. Such a command in Yocto-CI has `timeout` defined along, which can be set by the user, has default value (300 sec) or is set to 0 meaning there is not timeout, the command run until return.
+with `cd /home/root/cxl-validation-suite && ./cpdk_HelloWorld` is what to be run on the target. Such a command in Yocto-CI has a `timeout` defined along, which can be set by the user, can be left with default value (300 sec) or can be set to 0 meaning there is not timeout, so that the command will run until return.
 
 See excerpt from Yocto-Ci:
 
@@ -211,9 +211,9 @@ def run(self, command, timeout=None, ignore_status=True):
     """                                                             
 ```
 
-For slow targets, eg. `QEMU` running against `Cosim` that situation may stand up to an issue as a command may get killed before it returns. So we should either set no timeout or set it to the value we are essured it goes over the time the command is running.
+For slow targets, eg. `QEMU` running against `Cosim` the timeout may be an issue in which a command may get killed before it returns. So we should either set it to no timeout or set it to the value we are assured it goes over the time the command is running.
 
-My recommendation for the time being is putting the timeout to 0 (`timeout=0`) in the test you write, eg. see in `cpdk.py`
+My recommendation for the time being is putting the timeout to 0 (`timeout=0`) in a test you write, eg. see in `cpdk.py`
 
 ```
 [mbykowsx@GNR-JF04-5350 meta-cxl]$ git diff
