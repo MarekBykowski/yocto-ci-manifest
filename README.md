@@ -9,8 +9,9 @@ Yocto-CI manifest is a build-up of the mandatory git repositories, listed below,
 
 - [Set up access to private repos](#set-up-access-to-private-repos)
 - [Where do we work on?](#where-do-we-work-on)
-- [Working with the repos](#working-with-the-repos)
-  -  ss
+- [Work with the repos](#work-with-the-repos)
+  -  [Clone the repos](#clone-the-repos)
+  -  [Update the repos](#update-the-repos)
 - [Run Yocto to produce the images](#run-yocto-to-produce-the-images)
 - [Run `Yocto-CI` `testimage` tests](#run-yocto-ci-testimage-tests)
 - [`Yocto-CI` `testimage` test results](#yocto-ci-testimage-test-results)
@@ -63,9 +64,9 @@ mkdir -p /yocto/yocto-team/$USER
 cd /yocto/yocto-team/$USER
 ```
 
-## Working with the repos
+## Work with the repos
 
-### Cloning the repos
+### Clone the repos
 
 Clone all the repos necessary using the `git-repo` tool and the manifest file from within this repo.
 
