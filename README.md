@@ -68,7 +68,7 @@ cd /yocto/yocto-team/$USER
 
 ### Clone the repos
 
-Clone all the repos necessary using the `git-repo` tool and the manifest file from within this repo.
+Clone all the repos necessary using the `git-repo` tool and the manifest file `default.xml` from within this repo.
 
 ```
 git clone https://gerrit.googlesource.com/git-repo
