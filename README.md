@@ -14,6 +14,7 @@ Yocto-CI manifest is a build-up of the mandatory git repositories, listed below,
 - [Run `Yocto-CI` `testimage` tests](#run-yocto-ci-testimage-tests)
 - [`Yocto-CI` `testimage` test results](#yocto-ci-testimage-test-results)
 - [`Misc`](#misc)
+  - [Timeout for the command in test](#timeout-for-the-command-in-test)
 
 ## Set up access to private repos
 
@@ -186,7 +187,7 @@ Then look for the logfiles in `tmp/log/oeqa`
 
 ## Misc
 
-### Timeout for the commands in test
+### Timeout for the command in test
 
 Commands in tests in Yocto-CI are typically structured like this
 
