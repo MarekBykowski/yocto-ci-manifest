@@ -14,8 +14,8 @@ Yocto-CI manifest is a build-up of the mandatory git repositories, listed below,
   -  [Update the repos](#update-the-repos)
 - [Run Yocto to produce the images](#run-yocto-to-produce-the-images)
 - [`Yocto-CI` `testimage` tests](#run-yocto-ci-testimage-tests)
-- [Switch from `fatal` to `non-fatal` tests](#switching-from-fatal-to-non-fatal-tests)
-- [`Yocto-CI` `testimage` test results](##yocto-ci-testimage-tests)
+- [Switch from `fatal` to `non-fatal` tests](#switch-from-fatal-to-non-fatal-tests)
+- [`Yocto-CI` `testimage` test results](#yocto-ci-testimage-tests)
 - [`Yocto-CI` `oe-test` tool](#yocto-ci-testimage-oetest-tool)
 
 ## Set up access to private repos
@@ -120,7 +120,7 @@ bitbake core-image-cxl-sdk
 
 Then on top of it you can run the Yocto-CI `testimage` tests.
 
-## Switching from fatal to non-fatal tests
+## Switch from fatal to non-fatal tests
 
 By default `Yocto-CI` does `fatal` tests in which if in a set of tests any throughout fails the run is interrupted and the remaining tests after the first failed are not run, eg. if we have four tests
 
@@ -185,7 +185,7 @@ cd /yocto/yocto-team/$USER/poky/
 source oe-init-build-env <cxl | cxl-simics>
 ```
 
-### Listing tests
+### List tests
 
 List available modules from `<dir>`
 ```
@@ -207,7 +207,7 @@ List available tests from `<dir1>` and `<dir2>`
 oe-test runtime --list-tests name /yocto/yocto/meta-cxl/lib/oeqa/runtime/cases /yocto/yocto/meta-cxl/lib/oeqa/runtime/cases
 ```
 
-### Running tests
+### Run tests
 
 Run a tests group named `demo1`
 ```
