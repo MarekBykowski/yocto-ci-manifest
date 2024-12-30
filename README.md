@@ -15,6 +15,7 @@ Yocto-CI manifest is a build-up of the mandatory git repositories, listed below,
 - [Run Yocto to produce the images](#run-yocto-to-produce-the-images)
 - [Run `Yocto-CI` `testimage` tests](#run-yocto-ci-testimage-tests)
 - [`Yocto-CI` `testimage` test results](#yocto-ci-testimage-test-results)
+- [ yocto-ci-oe‐test tool]
 - [`Misc`](#misc)
   - [Timeout for the command in test](#timeout-for-the-command-in-test)
 
@@ -85,22 +86,10 @@ cd /yocto/yocto-team/$USER
 
 ## Run `Yocto` to produce the images
 
-Go to `poky` distro
-
+Go to the `poky` distro and source for the machine under test, `QEMU` or `Simics`. `QEMU` is labaled `cxl`, `Simics` is `cxl-simics`
 ```
 cd /yocto/yocto-team/$USER/poky/
-```
-
-and source either for `QEMU` (`QEMU` in Yocto is referred to as `cxl` machine) or `Simics` (`Simics` in Yocto is referred to as `cxl-simics`) depending on what machine you want to build the artifacts for and run the Yocto-CI against.
-
-```
-source oe-init-build-env cxl
-```
-
-or 
-
-```
-source oe-init-build-env cxl-simics
+source oe-init-build-env <cxl | cxl-simics>
 ```
 
 Upon sourcing you will be shown with
@@ -134,27 +123,15 @@ Then on top of it you can run the Yocto-CI `testimage` tests.
 
 ## Run `Yocto-CI` `testimage` tests
 
-Producing Yocto artifacts (steps above) is a prerequisite and a one-shot action for running `testimage` tests. By saying that I mean there is no need to re-generate the images each time you run, even add and then run the `testimage` tests unless the source code for artifacts gets changed and you want to have the changes in.
+Producing Yocto artifacts (steps above) is a prerequisite and a one-shot action for running `testimage` tests. By saying that I mean there is no need to re-generate the images each time you run the tests, even when you add/modify the tests there is no need to re-generate the rootfs. Typically the build master should let you know when you should update for the rootfs.
 
-Each time you log out and then in to `GNR` you have to switch to the `poky` distro and source for the machine under test you are interested in:
-
+Each time you log out and then in to `GNR` you have to switch to the `poky` distro and source for the machine under test:
 ```
 cd /yocto/yocto-team/$USER/poky/
+source oe-init-build-env <cxl | cxl-simics>
 ```
 
-If you want to test `QEMU` go with:
-
-```
-source oe-init-build-env cxl
-```
-
-If you want to test `Simics` go with:
-
-```
-source oe-init-build-env cxl-simics
-```
-
-Before running the tests make sure the rootfs image is updated and built (`bitbake core-image-cxl-sdk` shall run to completion and without the errors). After check for Yocto-CI parameters in `conf/local.conf`. Mine are/were when writing here:
+Before running the tests make sure the rootfs image is updated and built (`bitbake core-image-cxl-sdk` shall run to completion and without any errors). Then set for the Yocto-CI parameters in `conf/local.conf`. Mine are/were when writing here:
 ```
 TEST_TARGET_IP = "GNR-JF04-5350.jf.intel.com:2222"           
 TEST_SUITES = "ping ssh cpdk"
@@ -175,75 +152,73 @@ bitbake core-image-cxl-sdk -c testimage
 
 The command will run all the tests defined in `TEST_SUITES`
 
-## `Yocto-CI` `testimage` test results
+##  Where the `Yocto-CI` `testimage` test results are?
 
-If you are not yet in the Yocto-CI env. go with:
+If you are not yet in the Yocto-CI env. go there and source for the machine under test:
 ```
 cd /yocto/yocto-team/$USER/poky/
-```
-
-then source for the machine you are looking for, either for `QEMU`
-
-```
-source oe-init-build-env cxl
-```
-
-or `Simics`
-
-```
-source oe-init-build-env cxl-simics
+source oe-init-build-env <cxl | cxl-simics>
 ```
 
 Then look for the logfiles in `tmp/log/oeqa`
 
-## Misc
+## `Yocto-CI` `testimage` `oe‐test` tool
 
-### Timeout for the command in test
+`oe-test` tool is a shell like `testimage` tool. It enables you to list, run, re-run all, subset or a single test and inspect the logfiles.
 
-Commands in tests in Yocto-CI are typically structured like this
-
-```
-ssh -l root -o ServerAliveCountMax=2 -o ServerAliveInterval=30 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o LogLevel=ERROR -p 2222 GNR-JF04-5350.jf.intel.com export PATH=/usr/sbin:/sbin:/usr/bin:/bin; cd /home/root/cxl-validation-suite && ./cpdk_HelloWorld
-```
-
-with `cd /home/root/cxl-validation-suite && ./cpdk_HelloWorld` is what to be run on the target. Such a command in Yocto-CI has a `timeout` defined along, which can be set by the user, can be left with default value (300 sec) or can be set to 0 meaning there is not timeout, so that the command will run until return.
-
-See excerpt from Yocto-Ci:
+Go to poky and source for the `machine` under test, either for `QEMU` or `Simics`.
 
 ```
-def run(self, command, timeout=None, ignore_status=True):           
-    """                                                             
-        Runs command in target.                                     
-                                                                    
-        command:    Command to run on target.                       
-        timeout:    <value>:    Kill command after <val> seconds.   
-                    None:       Kill command default value seconds. 
-                    0:          No timeout, runs until return.      
-    """                                                             
+cd /yocto/yocto-team/$USER/poky/
+source oe-init-build-env <cxl | cxl-simics>
 ```
 
-For slow targets, eg. `QEMU` running against `Cosim` the timeout may be an issue in which a command may get killed before it returns. So we should either set it to no timeout or set it to the value we are assured it goes over the time the command is running.
+### Listing tests
 
-My recommendation for the time being is putting the timeout to 0 (`timeout=0`) in a test you write, eg. see in `cpdk.py`
-
+List available modules from `<dir>`
 ```
-[mbykowsx@GNR-JF04-5350 meta-cxl]$ git diff
-diff --git a/lib/oeqa/runtime/cases/cpdk.py b/lib/oeqa/runtime/cases/cpdk.py
-index 841bf46..4bad642 100644
---- a/lib/oeqa/runtime/cases/cpdk.py
-+++ b/lib/oeqa/runtime/cases/cpdk.py
-@@ -36,9 +36,13 @@ class CPDKTest(OERuntimeTestCase):
-     def test_cpdk(self):
-         cmds = [
-             'cd /home/root/cxl-validation-suite && ./cpdk_HelloWorld'
-             ]
-         for cmd in cmds:
--            status, output = self.target.run(cmd)
-+            # change the timeout as needed
-+            status, output = self.target.run(cmd, timeout=0)
-             #self.tc.logger.info("####### command #######\n%s" % cmd)
-             #self.tc.logger.info("####### output: #######\n%s" % output)
-             #self.tc.logger.info("####### status: #######\n%s" % status)
+oe-test runtime --list-tests module /yocto/yocto/meta-cxl/lib/oeqa/runtime/cases
 ```
 
-The only worry with `timeout=0` is that if the command doesn't return at all Yocto-CI `testimage` won't return neither. It will so called hang infinitely. So it is to be better thought later on...
+List available classes from `<dir>`
+```
+oe-test runtime --list-tests class /yocto/yocto/meta-cxl/lib/oeqa/runtime/cases 
+```
+
+List available tests from `<dir>`
+```
+oe-test runtime --list-tests name /yocto/yocto/meta-cxl/lib/oeqa/runtime/cases  
+```
+
+List available tests from `<dir1>` and `<dir2>`
+```
+oe-test runtime --list-tests name /yocto/yocto/meta-cxl/lib/oeqa/runtime/cases /yocto/yocto/meta-cxl/lib/oeqa/runtime/cases
+```
+
+### Running tests
+
+Run a tests group named `demo1`
+```
+oe-test runtime --target-type simpleremote --target-ip 127.0.0.1:2223 --server-ip 127.0.0.1 \
+--packages-manifest data/manifest --test-data-file data/testdata.json /yocto/yocto/meta-cxl/lib/oeqa/runtime/cases \
+--run-tests demo1
+```
+
+Run a single test `demo2.DEMO2Test.test_script_fail`
+```
+oe-test runtime --target-type simpleremote --target-ip 127.0.0.1:2223 --server-ip 127.0.0.1 \
+--packages-manifest data/manifest --test-data-file data/testdata.json /yocto/yocto/meta-cxl/lib/oeqa/runtime/cases \
+--run-tests demo2.DEMO2Test.test_script_fail
+```
+
+Run a list of tests putting one after another
+```
+oe-test runtime --target-type simpleremote --target-ip 127.0.0.1:2223 --server-ip 127.0.0.1 \
+--packages-manifest data/manifest --test-data-file data/testdata.json /yocto/yocto/meta-cxl/lib/oeqa/runtime/cases --run-tests \
+demo2.DEMO2Test.test_script_fail \
+demo2.DEMO2Test.test_method_sshd
+```
+
+### Where the tests results are?
+
+The logfiles are located in `/yocto/yocto-team/$USER/poky/<machine-under-test>/data`. `machine-under-test` is `cxl` or `cxl-simics`.
