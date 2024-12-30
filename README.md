@@ -56,7 +56,7 @@ Congrats! Now your credentials are cached.
 
 ## Where do we work on?
 
-**This is important!** I have prepared a special path `/yocto/yocto-team` on `GNR` using the `LVM` (logical-volume-manager) concatenating the free spaces across various drives in which all of us should create his/her `user` dir and work from there.
+**This is important!** I have prepared a special path `/yocto/yocto-team` on `GNR` using the `LVM` (logical-volume-manager) concatenating the free spaces across various drives in which all of us should create a `user` dir and work from there.
 If not abiding by to it we will exhaust the space on GNR shortly. Never ever try these steps in your home dir. Producing Yocto images and this is what we are going to do is ~100G occupation. Running tests on top is almost no extra space but the space the python test scripts take.
 
 ```
