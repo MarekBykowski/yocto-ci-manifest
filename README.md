@@ -221,4 +221,4 @@ demo2.DEMO2Test.test_method_sshd
 
 ### Where the tests results are?
 
-The logfiles are located in `/yocto/yocto-team/$USER/poky/<machine-under-test>/data`. `machine-under-test` is `cxl` or `cxl-simics`.
+The logfiles are located in `/yocto/yocto-team/$USER/poky/<cxl | cxl-simics>/data`
