@@ -131,7 +131,7 @@ cd /yocto/yocto-team/$USER/poky/
 source oe-init-build-env <cxl | cxl-simics>
 ```
 
-Before running the tests make sure the rootfs image is updated and built (`bitbake core-image-cxl-sdk` shall run to completion and without any errors). Then set for the Yocto-CI parameters in `conf/local.conf`. Mine are/were when writing here:
+Before running the tests make sure the rootfs image is updated and built (`bitbake core-image-cxl-sdk` shall run to completion and without any errors). Then set for the Yocto-CI parameters in `conf/local.conf`. Mine are/were at the time of writing the article:
 ```
 TEST_TARGET_IP = "GNR-JF04-5350.jf.intel.com:2222"           
 TEST_SUITES = "ping ssh cpdk"
@@ -140,11 +140,9 @@ TEST_SUITES = "ping ssh cpdk"
 - `TEST_TARGET_IP` defines the IP address of the Linux machine the `QEMU`/`Simics` runs on and the port number the these are available at. For `QEMU` as we typically run it from within `GNR` the IP is `GNR-JF04-5350.jf.intel.com`. The port must be checked in the log files of the `QEMU`. `Simics` are typically run on the Intel servers, so you need to check the IP for the port this wiki may be of help https://github.com/MarekBykowski/avery_qemu/wiki/Simics
 - `TEST_SUITES` defines the tests to run
 
-From within your working directory `/yocto/yocto-team/$USER/poky/cxl` or `/yocto/yocto-team/$USER/poky/cxl-simics` the tests pre-defined (written by Yocto folks) are accessed in `../meta/lib/oeqa/runtime/cases`. Tests that we write should go to our meta layer `meta-cxl` in `../../meta-cxl/lib/oeqa/runtime/cases`.
+From within your working directory `/yocto/yocto-team/$USER/poky/<cxl|cxl-simics>` the tests pre-defined (written by Yocto folks) are here `../meta/lib/oeqa/runtime/cases`. Tests that we write should go to our meta layer `meta-cxl` to `../../meta-cxl/lib/oeqa/runtime/cases`.
 
-I strongly advise each of us creates a branch with his/her own tests and we merge it to the main branch when appropriate.
-
-Kick off the `QEMU` or `Simics` (https://github.com/MarekBykowski/avery_qemu/wiki/B2B-with-Yocto-qcow), check the port the `QEMU` or `Simics` listens to for `ssh`, set the IP address of the `QEMU` or `Simics` along with the port in `conf/local.conf:TEST_TARGET_IP`, then run the tests with:
+Kick off the `QEMU` or `Simics` testing (https://github.com/MarekBykowski/avery_qemu/wiki/B2B-with-Yocto-qcow). After the machine comes up check for the ssh port the `QEMU` or `Simics` listens to, and set the port and IP address of the `QEMU` or `Simics`to `conf/local.conf:TEST_TARGET_IP`. Afterwards run the tests with:
 
 ```
 bitbake core-image-cxl-sdk -c testimage
