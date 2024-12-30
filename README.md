@@ -130,7 +130,7 @@ By default `Yocto-CI` does `fatal` tests in which if in a set of tests any throu
 
 tests #1 thr #2 are run, test #3 fails and test #4 is not run even though it could result with success.
 
-I have written a facility in which I changed the behaviour from `fatal` to `non-fatal`, in which all the tests from the example before are run are the tests pass and failed are reported in the end.
+I have written a facility in which I changed the behaviour from `fatal` to `non-fatal`, in which all the tests run presenting us with the result status.
 
 ## `Yocto-CI` `testimage` tests
 
