@@ -14,6 +14,7 @@ Yocto-CI manifest is a build-up of the mandatory git repositories, listed below,
   -  [Update the repos](#update-the-repos)
 - [Run Yocto to produce the images](#run-yocto-to-produce-the-images)
 - [Run `Yocto-CI` `testimage` tests](#run-yocto-ci-testimage-tests)
+- [Switch from `fatal` to `non-fatal` tests](#switching-from-fatal-to-non-fatal-tests)
 - [`Yocto-CI` `testimage` test results](#yocto-ci-testimage-test-results)
 - [`Yocto-CI` `oe-test` tool](#yocto-ci-testimage-oetest-tool)
 
