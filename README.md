@@ -218,3 +218,16 @@ demo2.DEMO2Test.test_method_sshd
 ### Where the tests results are?
 
 The logfiles are located in `/yocto/yocto-team/$USER/poky/<cxl | cxl-simics>/data`
+
+## Switching from fatal to non-fatal tests
+
+By default Yoccto-CI does `fatal` tests that is if in a set of tests any throughout fails the run is interrupted and the remaining tests are not run, eg.
+
+1. test ok
+2. test ok
+3. test nok
+4. test ok
+
+Then tests #1 thr #2 are run, test #3 fails and test #4 is not run.
+
+I have written a facility in which I change the behaviour from fata to non-fatal, that is all the #1 thr #4 are run are the test report is shown.
