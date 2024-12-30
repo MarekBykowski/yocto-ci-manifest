@@ -13,7 +13,7 @@ Yocto-CI manifest is a build-up of the mandatory git repositories, listed below,
   -  [Clone the repos](#clone-the-repos)
   -  [Update the repos](#update-the-repos)
 - [Run Yocto to produce the images](#run-yocto-to-produce-the-images)
-- [Run `Yocto-CI` `testimage` tests](#run-yocto-ci-testimage-tests)
+- [`Yocto-CI` `testimage` tests](#run-yocto-ci-testimage-tests)
 - [Switch from `fatal` to `non-fatal` tests](#switching-from-fatal-to-non-fatal-tests)
 - [`Yocto-CI` `testimage` test results](#yocto-ci-testimage-test-results)
 - [`Yocto-CI` `oe-test` tool](#yocto-ci-testimage-oetest-tool)
@@ -120,7 +120,20 @@ bitbake core-image-cxl-sdk
 
 Then on top of it you can run the Yocto-CI `testimage` tests.
 
-## Run `Yocto-CI` `testimage` tests
+## Switching from fatal to non-fatal tests
+
+By default `Yocto-CI` does `fatal` tests in which if in a set of tests any throughout fails the run is interrupted and the remaining tests after the first failed are not run, eg. if we have four tests
+
+1. test ok
+2. test ok
+3. test nok
+4. test ok
+
+tests #1 thr #2 are run, test #3 fails and test #4 is not run even though it could result with success.
+
+I have written a facility in which I changed the behaviour from `fatal` to `non-fatal`, in which all the tests from the example before are run are the tests pass and failed are reported in the end.
+
+## `Yocto-CI` `testimage` tests
 
 Producing Yocto artifacts (steps above) is a prerequisite and a one-shot action for running `testimage` tests. By saying that I mean there is no need to re-generate the images each time you run the tests, even when you add/modify the tests there is no need to re-generate the rootfs. Typically the build master should let you know when you should update for the rootfs.
 
@@ -143,13 +156,15 @@ From within your working directory `/yocto/yocto-team/$USER/poky/<cxl|cxl-simics
 
 Kick off the `QEMU` or `Simics` testing (https://github.com/MarekBykowski/avery_qemu/wiki/B2B-with-Yocto-qcow). After the machine comes up check for the ssh port the `QEMU` or `Simics` listens to, and set the port and IP address of the `QEMU` or `Simics`to `conf/local.conf:TEST_TARGET_IP`. Afterwards run the tests with:
 
+### Run `Yocto-CI` `testimage` tests
+
 ```
 bitbake core-image-cxl-sdk -c testimage
 ```
 
 The command will run all the tests defined in `TEST_SUITES`
 
-##  Where the `Yocto-CI` `testimage` test results are?
+###  Where the `Yocto-CI` `testimage` test results are?
 
 If you are not yet in the Yocto-CI env. go there and source for the machine under test:
 ```
@@ -159,9 +174,9 @@ source oe-init-build-env <cxl | cxl-simics>
 
 Then look for the logfiles in `tmp/log/oeqa`
 
-## `Yocto-CI` `testimage` `oe‐test` tool
+## `Yocto-CI` `testimage` shell-like tool
 
-`oe-test` tool is a shell like `testimage` tool. It enables you to list, run, re-run all, subset or a single test and inspect the logfiles.
+`oe-test` tool is a shell-like `testimage` tool. It enables you to list, the tests, run, re-run all, a subset, single test and inspect the logfiles.
 
 Go to poky and source for the `machine` under test, either for `QEMU` or `Simics`.
 
@@ -219,16 +234,3 @@ demo2.DEMO2Test.test_method_sshd
 ### Where the tests results are?
 
 The logfiles are located in `/yocto/yocto-team/$USER/poky/<cxl | cxl-simics>/data`
-
-## Switching from fatal to non-fatal tests
-
-By default `Yocto-CI` does `fatal` tests in which if in a set of tests any throughout fails the run is interrupted and the remaining tests after the first failed are not run, eg. if we have four tests
-
-1. test ok
-2. test ok
-3. test nok
-4. test ok
-
-tests #1 thr #2 are run, test #3 fails and test #4 is not run even though it could result with success.
-
-I have written a facility in which I changed the behaviour from `fatal` to `non-fatal`, in which all the tests from the example before are run are the tests pass and failed are reported in the end.
