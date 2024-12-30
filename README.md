@@ -221,13 +221,13 @@ The logfiles are located in `/yocto/yocto-team/$USER/poky/<cxl | cxl-simics>/dat
 
 ## Switching from fatal to non-fatal tests
 
-By default Yoccto-CI does `fatal` tests that is if in a set of tests any throughout fails the run is interrupted and the remaining tests are not run, eg.
+By default `Yocto-CI` does `fatal` tests in which if in a set of tests any throughout fails the run is interrupted and the remaining tests after the first failed are not run, eg. if we have four tests
 
 1. test ok
 2. test ok
 3. test nok
 4. test ok
 
-Then tests #1 thr #2 are run, test #3 fails and test #4 is not run.
+tests #1 thr #2 are run, test #3 fails and test #4 is not run even though it could result with success.
 
-I have written a facility in which I change the behaviour from fata to non-fatal, that is all the #1 thr #4 are run are the test report is shown.
+I have written a facility in which I changed the behaviour from `fatal` to `non-fatal`, in which all the tests from the example before are run are the tests pass and failed are reported in the end.
