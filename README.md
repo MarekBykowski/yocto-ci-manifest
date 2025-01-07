@@ -175,7 +175,7 @@ Then look for the logfiles in `tmp/log/oeqa`
 
 ## `Yocto-CI` `oe-test` testing
 
-`oe-test` tool is a shell-like `testimage` tool. It enables you to list, the tests, run, re-run all, a subset, single test and inspect the logfiles.
+`oe-test` tool is a shell-like `testimage` tool. It enables you to list and run all the tests, a subset of tests or a single test and inspect the logfiles.
 
 Go to poky and source for the `machine` under test, either for `QEMU` or `Simics`.
 
