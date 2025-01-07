@@ -14,7 +14,7 @@ Yocto-CI manifest is a build-up of the mandatory git repositories, listed below,
   -  [Update the repos](#update-the-repos)
 - [Run Yocto to produce the images](#run-yocto-to-produce-the-images)
 - [Switch from `fatal` to `non-fatal` tests](#switch-from-fatal-to-non-fatal-tests)
-- [`Yocto-CI` `testimage` test](#yocto-ci-testimage-tests)
+- [`Yocto-CI` `testimage` test](#yocto-ci-testimage-testing)
 - [`Yocto-CI` `oe-test` tool](#yocto-ci-testimage-oetest-tool)
 
 ## Set up access to private repos
@@ -155,7 +155,7 @@ From within your working directory `/yocto/yocto-team/$USER/poky/<cxl|cxl-simics
 
 Kick off the `QEMU` or `Simics` testing (https://github.com/MarekBykowski/avery_qemu/wiki/B2B-with-Yocto-qcow). After the machine comes up check for the ssh port the `QEMU` or `Simics` listens to, and set the port and IP address of the `QEMU` or `Simics`to `conf/local.conf:TEST_TARGET_IP`. Afterwards run the tests with:
 
-### Run `Yocto-CI` `testimage` tests
+### Run `Yocto-CI` `testimage` testing
 
 ```
 bitbake core-image-cxl-sdk -c testimage
@@ -173,7 +173,7 @@ source oe-init-build-env <cxl | cxl-simics>
 
 Then look for the logfiles in `tmp/log/oeqa`
 
-## `Yocto-CI` `oe-test` tool
+## `Yocto-CI` `oe-test` testing
 
 `oe-test` tool is a shell-like `testimage` tool. It enables you to list, the tests, run, re-run all, a subset, single test and inspect the logfiles.
 
