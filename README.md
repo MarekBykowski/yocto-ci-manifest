@@ -173,7 +173,7 @@ source oe-init-build-env <cxl | cxl-simics>
 
 Then look for the logfiles in `tmp/log/oeqa`
 
-## `Yocto-CI` `testimage` shell-like tool
+## `Yocto-CI` `oe-test` tool
 
 `oe-test` tool is a shell-like `testimage` tool. It enables you to list, the tests, run, re-run all, a subset, single test and inspect the logfiles.
 
