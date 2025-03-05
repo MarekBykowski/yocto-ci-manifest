@@ -53,6 +53,11 @@ The minimum required scopes are 'repo', 'read:org', 'workflow'.
 
 Congrats! Now your credentials are cached.
 
+To check the status run
+```
+gh auth status
+```
+
 ## Where do we work on?
 
 **This is important!** I have prepared a special path `/yocto/yocto-team` on `GNR` using the `LVM` (logical-volume-manager) concatenating the free spaces across various drives in which all of us should create a `user` dir and work from there.
