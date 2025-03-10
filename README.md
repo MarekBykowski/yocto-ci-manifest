@@ -55,8 +55,16 @@ Congrats! Now your credentials are cached.
 
 To check the status run
 ```
-gh auth status
+$ gh auth status -t
+github.com
+  ✓ Logged in to github.com account MarekBykowski (/home/mbykowsx/.config/gh/hosts.yml)
+  - Active account: true
+  - Git operations protocol: https
+  - Token: <my token seen>
+  - Token scopes: <my scope>
 ```
+
+Token is stored in a plan text here `/home/<user>/.config/gh/hosts.yml`
 
 ## Where do we work on?
 
